@@ -8,7 +8,6 @@ class Solution {
             else if (ch == 'y') cnt--;
         }
         
-        if (cnt == 0) return true;
-        else return false;
+        return cnt == 0;
     }
 }
