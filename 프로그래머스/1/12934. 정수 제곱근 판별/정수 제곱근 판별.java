@@ -1,11 +1,9 @@
 class Solution {
     public long solution(long n) {
-        for (double i = 1; i <= Math.sqrt(n); i++) {
-            if (i == Math.sqrt(n)) {
-                return (long)Math.pow(i + 1, 2);
-            }
+        if (Math.pow((int)Math.sqrt(n), 2) == n) {
+            return (long) Math.pow(Math.sqrt(n) + 1, 2);
         }
-        
+
         return -1;
     }
 }
