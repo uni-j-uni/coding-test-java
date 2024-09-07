@@ -7,6 +7,7 @@ class Solution {
             for (int num : arr) {
                 if (num % divisor == 0) length++;
             }
+            
             if (length == 0) {
                 int[] answer = new int[] { -1 };
                 return answer;
@@ -20,6 +21,7 @@ class Solution {
                     i++;
                 }
             }
+            
             Arrays.sort(answer);
 
             return answer;
