@@ -1,16 +1,10 @@
 class Solution {
     public int solution(int[][] sizes) {
-        int[][] reset = new int[sizes.length][sizes[0].length];
-        int width = Integer.MIN_VALUE, height = Integer.MIN_VALUE;
+        int width = 0, height = 0;
 
-        for (int i = 0; i < sizes.length; i++) {
-            reset[i][0] = Math.max(sizes[i][0], sizes[i][1]);
-            reset[i][1] = Math.min(sizes[i][0], sizes[i][1]);
-        }
-
-        for (int[] resets : reset) {
-            width = Math.max(width, resets[0]);
-            height = Math.max(height, resets[1]);
+        for (int[] card : sizes) {
+            width = Math.max(width, Math.max(card[0], card[1]));
+            height = Math.max(height, Math.min(card[0], card[1]));
         }
 
         return width * height;
