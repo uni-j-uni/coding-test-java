@@ -3,7 +3,6 @@ class Solution {
         int answer = nums.length * (nums.length - 1) * (nums.length - 2) / 6 ;
 
         for (int i = 0; i < nums.length - 2; i++) {
-            int sum = 0;
             for (int j = i + 1; j < nums.length - 1; j++) {
                 for (int k = j + 1; k < nums.length; k++) {
                     for (int l = 2; l <= Math.sqrt(nums[i] + nums[j] + nums[k]); l++) {
