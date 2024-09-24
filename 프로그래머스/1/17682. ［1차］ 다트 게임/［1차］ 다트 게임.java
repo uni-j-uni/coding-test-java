@@ -1,30 +1,46 @@
-import java.util.stream.IntStream;
-
 class Solution {
     public int solution(String dartResult) {
-        int[] point = new int[4];
+        int answer = 0, score = 0, before = 0;
+        char[] array = dartResult.toCharArray();
 
-        for (int i = 0, index = 1; i < dartResult.length(); i++){
-            char ch = dartResult.charAt(i);
-
-            if (point[index - 1] == 1 && ch - '0' == 0){
-                point[index - 1] *= 10;
-                continue;
-            } else if (0 <= ch - '0' && ch - '0' <= 9){
-                point[index++] = ch - '0';
-                continue;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] >= 48 && array[i] <= 57) {
+                score = array[i] - 48;
+                if (array[i] == 49 && array[i + 1] == 48) {
+                    score = 10;
+                    i++;
+                }
+                i++;
             }
 
-            if (ch == 'D') {
-                point[index - 1] = (int) Math.pow(point[index - 1], 2);
-            } else if (ch == 'T') {
-                point[index - 1] = (int) Math.pow(point[index - 1], 3);
-            } else if (ch == '*'){
-                point[index - 1] *= 2;
-                point[index - 2] *= 2;
-            } else if (ch == '#') point[index - 1] *= -1;
+            switch (array[i]) {
+                case 'S':
+                    answer += score;
+                    break;
+                case 'D':
+                    score = (int)Math.pow(score, 2);
+                    answer += score;
+                    break;
+                case 'T':
+                    score = (int)Math.pow(score, 3);
+                    answer += score;
+                    break;
+            }
+
+            if (i + 1 == array.length) break;
+            if (array[i + 1] == '*') {
+                answer += before + score;
+                i++;
+                if (i - 3 > 0 && array[i - 3] == '*') answer += before;
+            }
+            else if (array[i + 1] == '#') {
+                score *= -1;
+                answer += score * 2;
+                i++;
+            }
+            if (i + 3 < array.length && array[i + 3] == '*') before = score;
         }
 
-        return IntStream.of(point).sum();
+        return answer;
     }
 }
