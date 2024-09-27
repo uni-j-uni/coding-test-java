@@ -3,14 +3,14 @@ class Solution {
         StringBuilder sb = new StringBuilder();
 
         for (char ch : s.toCharArray()) {
-            int pass = index, i = 1;
+            int stop = 0;
 
-            while (i <= pass) {
-                if (ch + i > 122) ch -= 26;
-                if (skip.contains(String.valueOf((char)(ch + i)))) pass++;
-                i++;
+            while (stop < index){
+                ch = (char) ((ch - 97 + 1) % 26 + 97);
+                if (!skip.contains(String.valueOf(ch))) {
+                    stop++;
+                }
             }
-            ch = (char) (ch + pass > 122 ? (int) ch + pass - 26 : ch + pass);
             sb.append(ch);
         }
 
