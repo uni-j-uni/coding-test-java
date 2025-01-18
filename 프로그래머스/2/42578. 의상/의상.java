@@ -25,3 +25,4 @@ class Solution {
         return result - 1;
     }
 }
+// 소요 시간: 29'36"
