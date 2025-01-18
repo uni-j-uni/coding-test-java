@@ -14,3 +14,4 @@ class Solution {
         return participant[participant.length - 1];
     }
 }
+// 소요 시간: 4'07"
