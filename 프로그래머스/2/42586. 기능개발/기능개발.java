@@ -26,4 +26,4 @@ class Solution {
         return answer;
     }
 }
-// 소요 시간: 26'01"
+// 소요 시간: 26M 01S
