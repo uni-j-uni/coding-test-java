@@ -26,4 +26,4 @@ class Solution {
         return sec + bridge_length;
     }
 }
-// 소요 시간: 1:45'52"
+// 소요 시간: 1H 45M 52S
